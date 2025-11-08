@@ -10,7 +10,7 @@ const backgroundLevel1 = new Sprite({
     x: 0,
     y: 0,
   },
-  imageSrc: ".backgroundLevel1.png"
+  imageSrc: "./backgroundLevel1.png"
 })
 
 const player = new Player({
@@ -47,5 +47,6 @@ function animate(){
   player.update()
 }
 animate()
+
 
 
