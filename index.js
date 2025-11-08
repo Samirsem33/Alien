@@ -10,12 +10,12 @@ const backgroundLevel1 = new Sprite({
     x: 0,
     y: 0,
   },
-  imageSrc: "./img/backgroundLevel1.png"
+  imageSrc: ".backgroundLevel1.png"
 })
 
 const player = new Player({
-  // imageSrc: "./img/alien/alien96.png",
-  imageSrc: "./img/alien/alienjump96.png"
+  // imageSrc: "./alien96.png",
+  imageSrc: "./alienjump96.png"
 }) 
 
 const keys = {
@@ -47,4 +47,5 @@ function animate(){
   player.update()
 }
 animate()
+
 
