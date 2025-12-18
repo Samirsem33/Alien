@@ -5,18 +5,83 @@ const c = canvas.getContext("2d")
 canvas.width = 64 * 16 // 1024
 canvas.height = 64 * 9// 576
 
+const parsedCollisions = collisionsLevel1.parse2D()
+const collisionBlocks = parsedCollisions.createObjectsFrom2D()
+
 const backgroundLevel1 = new Sprite({
   position: {
     x: 0,
     y: 0,
   },
-  imageSrc: "./backgroundLevel1.png"
+  // imageSrc: "./img/backgroundLevel1.png",
+  imageSrc: "./img/backgroundl1.png",
 })
 
 const player = new Player({
-  // imageSrc: "./alien96.png",
-  imageSrc: "./alienjump96.png"
+  collisionBlocks,
+  // imageSrc: "./img/king/idle.png",
+  imageSrc: "./img/alien/idlealien.png",
+  // frameRate: 11,
+  frameRate: 1,
+  animations: {
+    idleRight: {
+      // frameRate: 11,
+      frameRate: 1,
+      frameBuffer: 4,
+      loop: true, 
+      // imageSrc: "./img/king/idle.png",
+      imageSrc: "./img/alien/idlealien.png",
+    },
+    idleLeft: {
+      // frameRate: 11,
+      frameRate: 1,
+      frameBuffer: 4,
+      loop: true, 
+      // imageSrc: "./img/king/idleLeft.png",
+      imageSrc: "./img/alien/idlealien.png",
+    },
+    runRight: {
+      // frameRate: 8,
+      frameRate: 4,
+      frameBuffer: 4,
+      loop: true,
+      // imageSrc: "./img/king/runRight.png",
+      imageSrc: "./img/alien/uright.png",
+    },
+    runLeft: {
+      // frameRate: 8,
+      frameRate: 4,
+      frameBuffer: 4,
+      loop: true, 
+      // imageSrc: "./img/king/runLeft.png",
+      imageSrc: "./img/alien/uleft.png",
+    },
+    enterDoor: {
+      frameRate: 8,
+      // frameBuffer: 4,
+      frameBuffer: 10,
+      loop: false, 
+      // imageSrc: "./img/king/enterDoor.png",
+      imageSrc: "./img/alien/enterDoor.png",
+    },
+  },
 }) 
+
+const doors = [
+  new Sprite({
+    position: {
+      x: 64*12,
+      // y: 64*4+14,
+      y: 64*4+16,
+    },
+    // imageSrc: "./img/doorOpen.png",
+    imageSrc: "./img/alien/opendoors.png",
+    frameRate: 5,
+    frameBuffer: 5,
+    loop: false,
+    autoplay: false,
+  })
+]
 
 const keys = {
   w:{
@@ -34,19 +99,17 @@ function animate(){
   window.requestAnimationFrame(animate)
 
   backgroundLevel1.draw()
+  collisionBlocks.forEach((collisionBlock) =>{
+    collisionBlock.draw()
+  })
+  doors.forEach((door) =>{
+    door.draw()
+  })
 
-  // c.fillStyle = "white"
-  // c.fillRect(0, 0, canvas.width, canvas.height)
-  
-
-  player.velocity.x = 0
-  if (keys.d.pressed && player.position.x < canvas.width-player.width-126) player.velocity.x = 3
-  else if (keys.a.pressed && player.position.x > 114) player.velocity.x = -3
+  player.handleInput(keys)
 
   player.draw()
   player.update()
 }
 animate()
-
-
 
