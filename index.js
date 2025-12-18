@@ -14,13 +14,13 @@ const backgroundLevel1 = new Sprite({
     y: 0,
   },
   // imageSrc: "./img/backgroundLevel1.png",
-  imageSrc: "./img/backgroundl1.png",
+  imageSrc: "backgroundl1.png",
 })
 
 const player = new Player({
   collisionBlocks,
   // imageSrc: "./img/king/idle.png",
-  imageSrc: ".idlealien.png",
+  imageSrc: "idlealien.png",
   // frameRate: 11,
   frameRate: 1,
   animations: {
@@ -30,7 +30,7 @@ const player = new Player({
       frameBuffer: 4,
       loop: true, 
       // imageSrc: "./img/king/idle.png",
-      imageSrc: ".idlealien.png",
+      imageSrc: "idlealien.png",
     },
     idleLeft: {
       // frameRate: 11,
@@ -38,7 +38,7 @@ const player = new Player({
       frameBuffer: 4,
       loop: true, 
       // imageSrc: "./img/king/idleLeft.png",
-      imageSrc: ".idlealien.png",
+      imageSrc: "idlealien.png",
     },
     runRight: {
       // frameRate: 8,
@@ -46,7 +46,7 @@ const player = new Player({
       frameBuffer: 4,
       loop: true,
       // imageSrc: "./img/king/runRight.png",
-      imageSrc: ".uright.png",
+      imageSrc: "uright.png",
     },
     runLeft: {
       // frameRate: 8,
@@ -54,7 +54,7 @@ const player = new Player({
       frameBuffer: 4,
       loop: true, 
       // imageSrc: "./img/king/runLeft.png",
-      imageSrc: ".uleft.png",
+      imageSrc: "uleft.png",
     },
     enterDoor: {
       frameRate: 8,
@@ -62,7 +62,7 @@ const player = new Player({
       frameBuffer: 10,
       loop: false, 
       // imageSrc: "./img/king/enterDoor.png",
-      imageSrc: ".enterDoor.png",
+      imageSrc: "enterDoor.png",
     },
   },
 }) 
@@ -75,7 +75,7 @@ const doors = [
       y: 64*4+16,
     },
     // imageSrc: "./img/doorOpen.png",
-    imageSrc: ".opendoors.png",
+    imageSrc: "opendoors.png",
     frameRate: 5,
     frameBuffer: 5,
     loop: false,
@@ -112,5 +112,6 @@ function animate(){
   player.update()
 }
 animate()
+
 
 
